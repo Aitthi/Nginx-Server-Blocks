@@ -1,4 +1,3 @@
-
 #!/bin/bash
 #color
 RESTORE='\033[0m'
@@ -28,7 +27,7 @@ read -p 'Host Name example.com or domain.example.com : ' hostName
 sudo mkdir -p /var/www/$hostName/html
 sudo chown -R $USER:$USER /var/www/$hostName/html
 sudo chmod -R 755 /var/www
-echo /var/www/$hostName/html/index.html << 'EOF'
+cat > /var/www/$hostName/html/index.html <<EOF
 <html>
     <head>
         <title>Welcome to $hostName</title>
@@ -39,7 +38,7 @@ echo /var/www/$hostName/html/index.html << 'EOF'
 </html>
 EOF
 sudo cp /etc/nginx/sites-available/default /etc/nginx/sites-available/$hostName
-echo /etc/nginx/sites-available/$hostName < 'EOF'
+cat > /etc/nginx/sites-available/$hostName <<EOF
 server {
     listen 80;
     listen [::]:80;
