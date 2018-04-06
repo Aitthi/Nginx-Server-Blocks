@@ -30,10 +30,10 @@ sudo chmod -R 755 /var/www
 cat > /var/www/$hostName/html/index.html <<EOF
 <html>
     <head>
-        <title>Welcome to $hostName</title>
+        <title>Welcome to ${hostName}</title>
     </head>
     <body>
-        <h1>Success!  The $hostName server block is working!</h1>
+        <h1>Success!  The ${hostName} server block is working!</h1>
     </body>
 </html>
 EOF
@@ -43,10 +43,10 @@ server {
     listen 80;
     listen [::]:80;
 
-    root /var/www/$hostName/html;
+    root /var/www/${hostName}/html;
     index index.html index.htm;
 
-    server_name $hostName;
+    server_name ${hostName};
 
     location / {
         try_files $uri $uri/ =404;
